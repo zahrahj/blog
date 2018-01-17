@@ -23,9 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm2p-3+y2%r*-(m^@ihs+d&p1tn$u5_vsa*0ich!d*bmke_0dg_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+
+
+ALLOWED_HOSTS = ['207.154.250.49']
 
 
 # Application definition
@@ -77,13 +79,27 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
+if DEBUG:
+    DATABASES = {
+    'default':{
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+
+
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django',
+        'USER': 'django',
+        'PASSWORD': '94b2db74a96b07ff920aa5554fd79944',
+        'HOST': 'localhost',
+        'PORT':'',
+        }
+    }
+
 
 
 # Password validation
