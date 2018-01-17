@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block header %}
+
+	List
+
+{% endblock header %}
+
+{% block content %}
+<br> <br>
+
+
+<form action="{% url 'list' %}" methoc="GET" class="form-control" >
+	<input type="text" name="q" placeholder="search for Articles..." value="{{request.GET.q}}">
+	<input type="submit" value="search" class= "btn btn-outline-primary">
+</form.
+
+<br><br>
+
+<div class="row">
+	 {% for wow in posts %}
+
+	  <div class="col-sm-6 col-md-4">
+			<div class="card">
+				{% if wow.photo %}
+					<div class="card" style="width: 18rem;">
+
+					<img class= "card-img-top" src="{{wow.photo.url}}" alt="Article image">
+				</div> 
+				{% endif %}
+
+			  <div class="card-body">
+			    <h5 class="card-title">{{wow.title}}</h5>
+			    <p class="card-text">content: {{wow.content}}</p>
+			    <p class="card-text">Author: {{wow.author}}</p>
+			    <a href="{% url 'detail' post_id=wow.id %}" class="btn btn-outline-dark">Info</a>
+
+			    {% if request.user.is_staff or request.user.is_superuser %} 
+			    <a href="{% url 'delete' post_id=wow.id %}" class="btn btn-outline-danger">delete</a>
+			    <a href="{% url 'update' post_id=wow.id %}" class="btn btn-outline-primary">update</a>
+			    {% endif %}
+
+			  </div> 
+			</div>
+	  </div>
+	{% endfor %}
+</div>
+{% endblock content %}
+
+
