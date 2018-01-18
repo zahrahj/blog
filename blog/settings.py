@@ -27,7 +27,7 @@ DEBUG = False
 
 
 
-ALLOWED_HOSTS = ['207.154.250.49']
+ALLOWED_HOSTS = ['207.154.237.213']
 
 
 # Application definition
@@ -94,7 +94,7 @@ else:
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'django',
         'USER': 'django',
-        'PASSWORD': 'c98145825f7fb6469f128651f2',
+        'PASSWORD': 'a8f21875f50588f0b399ad03056c94ee',
         'HOST': 'localhost',
         'PORT':'',
         }
