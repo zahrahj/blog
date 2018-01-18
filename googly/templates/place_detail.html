@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block header %}
+
+	results
+	 
+{% endblock header %}
+
+
+{% block content %}
+
+  <div class="card-body">
+  	<div class="card-body">
+    <h5 class="card-title">{{response.result.name}}</h5>
+    <h6 class="card-text">Place ID: {{response.result.place_id}}</h6> <br>
+    <h7 class="card-text">Rating: {{response.result.rating}}</h7> <br>
+    <p class="card-text">formatted address: {{response.result.formatted_address}} </p>
+    <p class="card-text">Lat: {{response.result.geometry.location.lat}} </p>
+    <p class="card-text">Ing: {{response.result.geometry.location.lng}} </p>
+    <p class="card-text">Phone number: {{response.result.international_phone_number}} </p>
+
+  
+
+		<iframe
+	  width="600"
+	  height="450"
+	  frameborder="0" style="border:0"
+	  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD7ffShoMtbRAjf6U4LkcVtSwKgh4PCIYs
+	    &q={{response.result.geometry.location.lat}},{{response.result.geometry.location.lng}}" allowfullscreen>
+	</iframe>
+
+</div>
+</div>
+
+
+{% endblock content %}
